@@ -6,7 +6,9 @@ import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   const { games, error, isLoading } = useGames();
-  const skeletons = new Array(10).fill(0).map((_, i) => i);
+  const skeletons = Array(10)
+    .fill(0)
+    .map((_, i) => i);
 
   return (
     <>
@@ -18,13 +20,13 @@ const GameGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => (
-            <GameCardContainer>
-              <GameCardSkeleton key={skeleton} />{" "}
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />{" "}
             </GameCardContainer>
           ))}
         {games.map((game) => (
-          <GameCardContainer>
-            <GameCard key={game.id.toString()} game={game}></GameCard>
+          <GameCardContainer key={game.id}>
+            <GameCard game={game}></GameCard>
           </GameCardContainer>
         ))}
       </SimpleGrid>
