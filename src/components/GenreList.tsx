@@ -4,10 +4,12 @@ import getCroppedImageUrl from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 
 const GenreList = () => {
-  const { data, isLoading } = useGenres();
+  const { data, isLoading, error } = useGenres();
   const skeletons = Array(20)
     .fill(0)
     .map((_, i) => i);
+
+  if (error) return null;
 
   if (isLoading)
     return (
