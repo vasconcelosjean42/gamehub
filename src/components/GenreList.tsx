@@ -13,7 +13,7 @@ import getCroppedImageUrl from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 
 interface Props {
-  selectedGenre: Genre | null;
+  selectedGenre?: number;
   onSelectGenre: (genre: Genre) => void;
 }
 
@@ -58,7 +58,9 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 whiteSpace={"normal"}
                 textAlign={"left"}
               >
-                <Text fontWeight={selectedGenre === genre ? "bold" : "normal"}>
+                <Text
+                  fontWeight={selectedGenre === genre.id ? "bold" : "normal"}
+                >
                   {genre.name}
                 </Text>
               </Button>

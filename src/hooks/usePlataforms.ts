@@ -8,14 +8,18 @@ export interface Platform {
   slug: string;
 }
 
-const apiClient = new APIClient<Platform>("/platforms");
+const apiClient = new APIClient<Platform>("/platforms/lists/parents");
 
 const usePlataforms = () =>
   useQuery<FetchResponse<Platform>>({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24h
-    initialData: { count: plataforms.length, results: plataforms },
+    initialData: {
+      count: plataforms.length,
+      next: "true",
+      results: plataforms,
+    },
   });
 
 export default usePlataforms;
