@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import { useParams } from "react-router-dom";
-import { Game } from "./useGames";
+import { Game } from "../entities/Game";
 
 const useGame = () => {
   const { slug } = useParams();
