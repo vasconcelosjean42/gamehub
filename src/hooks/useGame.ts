@@ -3,8 +3,7 @@ import APIClient from "../services/api-client";
 import { useParams } from "react-router-dom";
 import { Game } from "../entities/Game";
 
-const useGame = () => {
-  const { slug } = useParams();
+const useGame = (slug: string) => {
   const apiClient = new APIClient<Game>(`games/${slug}`);
   return useQuery<Game, Error>({
     queryKey: ["games", slug],
