@@ -1,7 +1,7 @@
 import React from "react";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { AspectRatio, Spinner } from "@chakra-ui/react";
-import { Trailer } from "../entities/Trailer";
+import Trailer from "../entities/Trailer";
 import { useQuery } from "@tanstack/react-query";
 import useTrailer from "../hooks/useTrailer";
 
