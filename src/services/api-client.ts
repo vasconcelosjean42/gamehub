@@ -29,6 +29,12 @@ class APIClient<T> {
   getDetails = () => {
     return axiosInstance.get<T>(this.endpoint).then((res) => res.data);
   };
+
+  getTrailer = () => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;

@@ -12,8 +12,8 @@ const GameAttributes = ({ game }: Props) => {
   return (
     <SimpleGrid columns={2} spacing={5} mt={5}>
       <Attribute text="Platforms">
-        {game.parent_platforms.map((platform) => (
-          <Text>{platform.platform.name}</Text>
+        {game.parent_platforms.map(({ platform }) => (
+          <Text key={platform.id}>{platform.name}</Text>
         ))}
       </Attribute>
       <Attribute text="Metascore">
@@ -21,12 +21,12 @@ const GameAttributes = ({ game }: Props) => {
       </Attribute>
       <Attribute text="Genres">
         {game.genres.map((genre) => (
-          <Text>{genre.name}</Text>
+          <Text key={genre.id}>{genre.name}</Text>
         ))}
       </Attribute>
       <Attribute text="Publishers">
-        {game.publishers.map((publisher) => (
-          <Text>{publisher.name}</Text>
+        {game.publishers.map((publisher, i) => (
+          <Text key={i}>{publisher.name}</Text>
         ))}
       </Attribute>
     </SimpleGrid>

@@ -1,27 +1,21 @@
-import { Box, Button, Heading, Spinner, Text } from "@chakra-ui/react";
-import useGame from "../hooks/useGame";
-import { useState } from "react";
-import GameCardSkeleton from "../components/GameCardSkeleton";
+import { Box, Heading, Spinner } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
-import { useLocation } from "react-router-dom";
-import { Game } from "../entities/Game";
-
-interface GameDetail {
-  name: string;
-  description_raw: string;
-}
+import GameTrailer from "../components/GameTrailer";
+import useGame from "../hooks/useGame";
 
 const GameDetailPage = () => {
   const { data: game, error, isLoading } = useGame();
   if (isLoading) return <Spinner />;
 
   if (error || !game) throw error;
+  console.log(game);
   return (
     <Box>
       <Heading color={"white"}>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
     </Box>
   );
 };

@@ -27,6 +27,8 @@ const GameGrid = () => {
   const fetchedGamesCount =
     data?.pages.reduce((prev, cur) => prev + cur.results.length, 0) || 0;
 
+  console.log(data);
+
   return (
     <InfiniteScroll
       dataLength={fetchedGamesCount}
